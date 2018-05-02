@@ -106,6 +106,7 @@ main () {
     install python3-pip
     pipinstall yapf
     pipinstall pytest
+    pipinstall ptpython
 
     codeinstall ms-python.python
     codeinstall magicstack.magicpython
