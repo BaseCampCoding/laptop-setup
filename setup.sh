@@ -85,6 +85,17 @@ set_clock () {
     su basecamp -c "gsettings set org.gnome.desktop.datetime automatic-timezone true"
 }
 
+set_prompt () {
+    LINE="PS1=\"${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ \""
+    grep "^PS1=" /home/basecamp/.bashrc &> /dev/null
+    if [[ $? == 1 ]]; then
+        echo "Configuring prompt"
+        echo "$LINE" >> /home/basecamp/.bashrc
+    else
+        echo "SKIP: prompt already configured"
+    fi
+}
+
 main () {
     install curl
     install git
@@ -113,6 +124,7 @@ main () {
 
     set_favorites
     set_clock
+    set_prompt
 }
 
 configure_vscode () {
