@@ -132,7 +132,7 @@ configure_vscode () {
     echo "Configuring vscode"
     CONFIG=`cat <<EOF
 {
-    "editor.fontSize": 17,
+    "editor.fontSize": 15,
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "files.insertFinalNewline": true,
