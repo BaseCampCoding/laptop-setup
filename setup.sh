@@ -95,6 +95,17 @@ turn_off_python_bytecode() {
     fi
 }
 
+set_prompt () {
+    LINE="PS1=\"${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ \""
+    grep "^PS1=" /home/basecamp/.bashrc &> /dev/null
+    if [[ $? == 1 ]]; then
+        echo "Configuring prompt"
+        echo "$LINE" >> /home/basecamp/.bashrc
+    else
+        echo "SKIP: prompt already configured"
+    fi
+}
+
 main () {
     install curl
     install git
@@ -105,6 +116,7 @@ main () {
     install python3-pip
     pipinstall yapf
     pipinstall pytest
+    pipinstall ptpython
 
     codeinstall ms-python.python
     codeinstall magicstack.magicpython
@@ -125,13 +137,14 @@ main () {
     set_clock
 
     turn_off_python_bytecode
+    set_prompt
 }
 
 configure_vscode () {
     echo "Configuring vscode"
     CONFIG=`cat <<EOF
 {
-    "editor.fontSize": 17,
+    "editor.fontSize": 15,
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "files.insertFinalNewline": true,
