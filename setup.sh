@@ -85,6 +85,16 @@ set_clock () {
     su basecamp -c "gsettings set org.gnome.desktop.datetime automatic-timezone true"
 }
 
+turn_off_python_bytecode() {
+    grep "PYTHONDONTWRITEBYTECODE=1" /home/basecamp/.bashrc &> /dev/null
+    if [[ $? == 1 ]]; then
+        echo "Turning off Python Bytecode generation"
+        echo "PYTHONDONTWRITEBYTECODE=1" >> /home/basecamp/.bashrc
+    else
+        echo "SKIP: Python Bytecode generation turned off already"
+    fi
+}
+
 main () {
     install curl
     install git
@@ -113,6 +123,8 @@ main () {
 
     set_favorites
     set_clock
+
+    turn_off_python_bytecode
 }
 
 configure_vscode () {
