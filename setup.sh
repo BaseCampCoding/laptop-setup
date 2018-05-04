@@ -177,7 +177,7 @@ configure_vscode () {
     "prettier.tabWidth": 4,
     "python.formatting.provider": "yapf",
     "python.linting.mypyEnabled": false,
-    "python.linting.pylintEnabled": true,
+    "python.linting.pylintEnabled": false,
     "python.unitTest.promptToConfigure": false,
     "python.unitTest.pyTestEnabled": true
 }
