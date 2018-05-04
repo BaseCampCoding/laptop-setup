@@ -53,7 +53,7 @@ npm_install () {
 }
 
 add_apt_updater_cronjob () {
-    JOB="0 9 * * 2 apt-get update && apt-get upgrade -y"
+    JOB="0 9 * * * apt-get update && apt-get upgrade -y"
     crontab -l | grep "apt-get update && apt-get upgrade -y" &> /dev/null
     if [[ $? == 1 ]]; then
         echo "Adding apt updater cronjob"
@@ -64,7 +64,7 @@ add_apt_updater_cronjob () {
 }
 
 add_pip_updater_cronjob () {
-    JOB="0 9 * * 2 pip3 install --upgrade yapf pytest"
+    JOB="0 9 * * * pip3 install --upgrade yapf pytest bcca flask django"
     crontab -l | grep "pip3 install --upgrade yapf pytest" &> /dev/null
     if [[ $? == 1 ]]; then
         echo "Adding pip updater cronjob"
