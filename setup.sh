@@ -179,7 +179,8 @@ configure_vscode () {
     "python.linting.mypyEnabled": false,
     "python.linting.pylintEnabled": false,
     "python.unitTest.promptToConfigure": false,
-    "python.unitTest.pyTestEnabled": true
+    "python.unitTest.pyTestEnabled": true,
+    "git.autofetch": true
 }
 EOF`
 
