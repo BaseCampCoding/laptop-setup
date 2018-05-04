@@ -64,7 +64,7 @@ add_apt_updater_cronjob () {
 }
 
 add_pip_updater_cronjob () {
-    JOB="0 9 * * * pip3 install --upgrade yapf pytest bcca flask django"
+    JOB="0 9 * * * pip3 install --upgrade yapf pytest bcca flask django requests records"
     crontab -l | grep "pip3 install --upgrade yapf pytest" &> /dev/null
     if [[ $? == 1 ]]; then
         echo "Adding pip updater cronjob"
@@ -138,6 +138,8 @@ main () {
     pipinstall bcca
     pipinstall flask
     pipinstall django
+    pipinstall requests
+    pipinstall records
 
     codeinstall ms-python.python
     codeinstall magicstack.magicpython
