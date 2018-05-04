@@ -136,6 +136,8 @@ main () {
     pipinstall pytest
     pipinstall ptpython
     pipinstall bcca
+    pipinstall flask
+    pipinstall django
 
     codeinstall ms-python.python
     codeinstall magicstack.magicpython
