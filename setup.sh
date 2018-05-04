@@ -85,6 +85,16 @@ set_clock () {
     su basecamp -c "gsettings set org.gnome.desktop.datetime automatic-timezone true"
 }
 
+turn_off_python_bytecode() {
+    grep "PYTHONDONTWRITEBYTECODE=1" /home/basecamp/.bashrc &> /dev/null
+    if [[ $? == 1 ]]; then
+        echo "Turning off Python Bytecode generation"
+        echo "PYTHONDONTWRITEBYTECODE=1" >> /home/basecamp/.bashrc
+    else
+        echo "SKIP: Python Bytecode generation turned off already"
+    fi
+}
+
 set_prompt () {
     LINE="PS1=\"${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ \""
     grep "^PS1=" /home/basecamp/.bashrc &> /dev/null
@@ -136,6 +146,8 @@ main () {
 
     set_favorites
     set_clock
+
+    turn_off_python_bytecode
     set_prompt
 
     set_git_commit_template
