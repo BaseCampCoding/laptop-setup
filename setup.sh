@@ -120,6 +120,7 @@ set_git_commit_template () {
 main () {
     install curl
     install git
+    install exuberant-ctags
 
     add_vscode_repo
     install code
