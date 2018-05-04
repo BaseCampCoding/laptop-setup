@@ -96,6 +96,17 @@ set_prompt () {
     fi
 }
 
+set_git_commit_template () {
+    echo "Configuring git commit template"
+    git config --global commit.template "/home/basecamp/.config/git/commit_template"
+
+    mkdir -p /home/basecamp/.config/git
+    echo "<Short Header>" > /home/basecamp/.config/git/commit_template
+    echo "" >> /home/basecamp/.config/git/commit_template
+    echo "<Summary of work>" >> /home/basecamp/.config/git/commit_template
+}
+
+
 main () {
     install curl
     install git
@@ -126,6 +137,8 @@ main () {
     set_favorites
     set_clock
     set_prompt
+
+    set_git_commit_template
 }
 
 configure_vscode () {
