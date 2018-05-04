@@ -128,6 +128,7 @@ main () {
     pipinstall yapf
     pipinstall pytest
     pipinstall ptpython
+    pipinstall bcca
 
     codeinstall ms-python.python
     codeinstall magicstack.magicpython
