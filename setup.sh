@@ -116,6 +116,12 @@ set_git_commit_template () {
     echo "<Summary of work>" >> /home/basecamp/.config/git/commit_template
 }
 
+add_global_python_gitignore () {
+    echo "Configuring git to ignore unwanted python files"
+    git config --global core.excludefiles '/home/basecamp/.config/git/ignore'
+    curl "https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore" -s -o /home/basecamp/.config/git/ignore
+}
+
 
 main () {
     install curl
@@ -153,6 +159,8 @@ main () {
     set_prompt
 
     set_git_commit_template
+
+    add_global_python_gitignore
 }
 
 configure_vscode () {
