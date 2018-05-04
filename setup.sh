@@ -178,6 +178,7 @@ configure_vscode () {
     "python.formatting.provider": "yapf",
     "python.linting.mypyEnabled": false,
     "python.linting.pylintEnabled": false,
+    "python.pythonPath": "/usr/bin/python3",
     "python.unitTest.promptToConfigure": false,
     "python.unitTest.pyTestEnabled": true,
     "git.autofetch": true
