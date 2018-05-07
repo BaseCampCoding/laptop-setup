@@ -122,6 +122,11 @@ add_global_python_gitignore () {
     curl "https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore" -s -o /home/basecamp/.config/git/ignore
 }
 
+hide_trash () {
+    echo "Hiding trash bin"
+    su basecamp -c "gsettings set org.gnome.nautilus.desktop trash-icon-visible false"
+}
+
 
 main () {
     install curl
@@ -158,6 +163,7 @@ main () {
 
     set_favorites
     set_clock
+    hide_trash
 
     turn_off_python_bytecode
     set_prompt
