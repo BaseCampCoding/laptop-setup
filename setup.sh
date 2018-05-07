@@ -127,11 +127,19 @@ hide_trash () {
     su basecamp -c "gsettings set org.gnome.nautilus.desktop trash-icon-visible false"
 }
 
+setup_postgresql () {
+    su postgres -c "createuser -s basecamp"
+    su basecamp -c "createdb"
+}
 
 main () {
     install curl
     install git
     install exuberant-ctags
+    install postgresql
+    install postgresql-contrib
+
+    setup_postgresql
 
     add_vscode_repo
     install code
@@ -145,6 +153,7 @@ main () {
     pipinstall django
     pipinstall requests
     pipinstall records
+    pipinstall psycopg2-binary
 
     codeinstall ms-python.python
     codeinstall magicstack.magicpython
