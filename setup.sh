@@ -12,7 +12,7 @@ add_vscode_repo () {
         echo "Creating vscode repo file"
         curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
         mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-        echo $VSCODE_REPO >> $VSCODE_REPO_PATH
+        echo "$VSCODE_REPO" >> $VSCODE_REPO_PATH
         apt-get update &> /dev/null
     else
         echo "SKIP: vscode repo file already exists"
@@ -68,7 +68,7 @@ add_pip_updater_cronjob () {
     crontab -l | grep "pip3 install --upgrade yapf pytest" &> /dev/null
     if [[ $? == 1 ]]; then
         echo "Adding pip updater cronjob"
-        printf "`crontab -l`\n$JOB\n" | crontab -
+        printf "%s\n$JOB\n" "$(crontab -l)" | crontab -
     else
         echo "SKIP: pip updater cronjob already created"
     fi
@@ -240,7 +240,7 @@ configure_vscode () {
 }
 EOF`
 
-    echo $CONFIG > /home/basecamp/.config/Code/User/settings.json
+    echo "$CONFIG" > /home/basecamp/.config/Code/User/settings.json
 }
 
 main 
