@@ -53,8 +53,8 @@ npm_install () {
 }
 
 add_apt_updater_cronjob () {
-    JOB="0 9 * * * apt-get update && apt-get upgrade -y"
-    crontab -l | grep "apt-get update && apt-get upgrade -y" &> /dev/null
+    JOB="0 9 * * 2 apt-get update; apt-get upgrade -y"
+    crontab -l | grep "apt-get update; apt-get upgrade -y" &> /dev/null
     if [[ $? == 1 ]]; then
         echo "Adding apt updater cronjob"
         echo "$JOB" | crontab -
