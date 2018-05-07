@@ -235,7 +235,7 @@ configure_vscode () {
     "python.linting.pylintEnabled": false,
     "python.pythonPath": "/usr/bin/python3",
     "python.unitTest.promptToConfigure": false,
-    "python.unitTest.pyTestEnabled": true,
+    "python.unitTest.pyTestEnabled": false,
     "git.autofetch": true
 }
 EOF`
