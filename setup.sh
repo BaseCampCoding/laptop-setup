@@ -132,6 +132,18 @@ setup_postgresql () {
     su basecamp -c "createdb"
 }
 
+configure_pytest () {
+    grep ". /home/basecamp/.config/bcca/bash/pytest" /home/basecamp/.bashrc &> /dev/null
+    if [[ $? == 1 ]]; then
+        echo "Configuring pytest"
+        echo ". /home/basecamp/.config/bcca/bash/pytest" >> /home/basecamp/.bashrc
+    else
+        echo "SKIP: Pytest already configured"
+    fi
+    mkdir -p /home/basecamp/.config/bcca/bash
+    echo "export PYTEST_ADDOPTS=\"--doctest-modules\"" > /home/basecamp/.config/bcca/bash/pytest
+}
+
 main () {
     install curl
     install git
@@ -154,6 +166,8 @@ main () {
     pipinstall requests
     pipinstall records
     pipinstall psycopg2-binary
+
+    configure_pytest
 
     codeinstall ms-python.python
     codeinstall magicstack.magicpython
