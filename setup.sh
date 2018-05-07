@@ -128,8 +128,21 @@ hide_trash () {
 }
 
 setup_postgresql () {
-    su postgres -c "createuser -s basecamp"
-    su basecamp -c "createdb"
+    su postgres -c 'psql -c "\du" | grep -E "^\s*basecamp"' &> /dev/null
+    if [[ $? == 1 ]]; then
+        echo "Creating postgresql user"
+        su postgres -c "createuser -s basecamp"
+    else
+        echo "SKIP: Postgresql user already created"
+    fi
+
+    su postgres -c 'psql --list | grep -E "^\s*basecamp\s*\| basecamp"' &> /dev/null
+    if [[ $? == 1 ]]; then
+        echo "Creating user's db"
+        su basecamp -c "createdb"
+    else
+        echo "SKIP: user's db already created"
+    fi
 }
 
 configure_pytest () {
