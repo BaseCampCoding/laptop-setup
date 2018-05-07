@@ -89,7 +89,7 @@ turn_off_python_bytecode() {
     grep "PYTHONDONTWRITEBYTECODE=1" /home/basecamp/.bashrc &> /dev/null
     if [[ $? == 1 ]]; then
         echo "Turning off Python Bytecode generation"
-        echo "PYTHONDONTWRITEBYTECODE=1" >> /home/basecamp/.bashrc
+        echo "export PYTHONDONTWRITEBYTECODE=1" >> /home/basecamp/.bashrc
     else
         echo "SKIP: Python Bytecode generation turned off already"
     fi
