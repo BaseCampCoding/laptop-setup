@@ -161,6 +161,7 @@ main () {
     install exuberant-ctags
     install postgresql
     install postgresql-contrib
+    install tree
 
     setup_postgresql
 
