@@ -19,6 +19,10 @@ add_vscode_repo () {
     fi
 }
 
+add_fish_repo () {
+    apt-add-repository --yes --update ppa:fish-shell/release-2
+}
+
 pipinstall () {
     echo "Installing/upgrading $1"
     pip3 install "$1" --upgrade &> /dev/null
@@ -168,6 +172,9 @@ main () {
 
     add_vscode_repo
     install code
+
+    add_fish_repo
+    install fish
 
     install python3-pip
     pipinstall yapf
