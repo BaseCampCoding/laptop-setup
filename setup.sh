@@ -20,6 +20,7 @@ add_vscode_repo () {
 }
 
 add_fish_repo () {
+    echo "Adding fish repo"
     apt-add-repository --yes --update ppa:fish-shell/release-2
 }
 
@@ -90,6 +91,7 @@ set_clock () {
 }
 
 turn_off_python_bytecode() {
+    echo "Disabling python bytecode"
     fish -c "set -U PYTHONDONTWRITEBYTECODE 1"
 }
 
