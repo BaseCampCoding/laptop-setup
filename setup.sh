@@ -144,15 +144,7 @@ setup_postgresql () {
 }
 
 configure_pytest () {
-    grep ". /home/basecamp/.config/bcca/bash/pytest" /home/basecamp/.bashrc &> /dev/null
-    if [[ $? == 1 ]]; then
-        echo "Configuring pytest"
-        echo ". /home/basecamp/.config/bcca/bash/pytest" >> /home/basecamp/.bashrc
-    else
-        echo "SKIP: Pytest already configured"
-    fi
-    mkdir -p /home/basecamp/.config/bcca/bash
-    echo "export PYTEST_ADDOPTS=\"--doctest-modules\"" > /home/basecamp/.config/bcca/bash/pytest
+    fish -c "set -U PYTEST_ADDOPTS \"--doctest-modules\""
 }
 
 main () {
