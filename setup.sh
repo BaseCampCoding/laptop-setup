@@ -24,6 +24,10 @@ add_fish_repo () {
     apt-add-repository --yes --update ppa:fish-shell/release-2
 }
 
+set_fish_as_default_shell () {
+    chsh -s /usr/bin/fish basecamp
+}
+
 pipinstall () {
     echo "Installing/upgrading $1"
     pip3 install "$1" --upgrade &> /dev/null
@@ -165,6 +169,7 @@ main () {
 
     add_fish_repo
     install fish
+    set_fish_as_default_shell
 
     install python3-pip
     pipinstall yapf
