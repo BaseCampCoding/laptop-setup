@@ -96,7 +96,7 @@ set_clock () {
 
 turn_off_python_bytecode() {
     echo "Disabling python bytecode"
-    fish -c "set -U PYTHONDONTWRITEBYTECODE 1"
+    fish -c "set -x -U PYTHONDONTWRITEBYTECODE 1"
 }
 
 set_prompt () {
@@ -152,7 +152,7 @@ setup_postgresql () {
 }
 
 configure_pytest () {
-    fish -c "set -U PYTEST_ADDOPTS \"--doctest-modules -x\""
+    fish -c "set -x -U PYTEST_ADDOPTS \"--doctest-modules -x\""
 }
 
 main () {
