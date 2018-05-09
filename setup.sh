@@ -21,7 +21,7 @@ add_vscode_repo () {
 
 add_fish_repo () {
     echo "Adding fish repo"
-    apt-add-repository --yes --update ppa:fish-shell/release-2
+    apt-add-repository --yes --update ppa:fish-shell/release-2 &> /dev/null
 }
 
 set_fish_as_default_shell () {
