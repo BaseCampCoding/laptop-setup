@@ -238,7 +238,8 @@ configure_vscode () {
     "python.pythonPath": "/usr/bin/python3",
     "python.unitTest.promptToConfigure": false,
     "python.unitTest.pyTestEnabled": false,
-    "git.autofetch": true
+    "git.autofetch": true,
+    "window.restoreWindows": "none"
 }
 EOF`
 
