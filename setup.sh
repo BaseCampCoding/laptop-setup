@@ -112,6 +112,19 @@ set_prompt () {
     } > $FISH_PROMPT
 }
 
+set_greeting () {
+    echo "Setting Shell Greeting"
+    mkdir -p /home/basecamp/.config/fish/functions
+    FISH_GREETING=/home/basecamp/.config/fish/functions/fish_greeting.fish
+    { echo 'function fish_greeting'
+      echo '    set_color yellow'
+      echo "    echo '-- Things you\'ve said recently --'"
+      echo '    set_color normal'
+      echo '    what_have_i_done --num 4'
+      echo 'end'
+    } > $FISH_GREETING
+}
+
 set_git_commit_template () {
     echo "Configuring git commit template"
     git config --global commit.template "/home/basecamp/.config/git/commit_template"
@@ -206,6 +219,7 @@ main () {
 
     turn_off_python_bytecode
     set_prompt
+    set_greeting
 
     set_git_commit_template
 
