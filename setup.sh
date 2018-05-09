@@ -90,13 +90,7 @@ set_clock () {
 }
 
 turn_off_python_bytecode() {
-    grep "PYTHONDONTWRITEBYTECODE=1" /home/basecamp/.bashrc &> /dev/null
-    if [[ $? == 1 ]]; then
-        echo "Turning off Python Bytecode generation"
-        echo "export PYTHONDONTWRITEBYTECODE=1" >> /home/basecamp/.bashrc
-    else
-        echo "SKIP: Python Bytecode generation turned off already"
-    fi
+    fish -c "set -U PYTHONDONTWRITEBYTECODE 1"
 }
 
 set_prompt () {
