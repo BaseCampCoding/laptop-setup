@@ -94,14 +94,16 @@ turn_off_python_bytecode() {
 }
 
 set_prompt () {
-    LINE="PS1=\"${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ \""
-    grep "^PS1=" /home/basecamp/.bashrc &> /dev/null
-    if [[ $? == 1 ]]; then
-        echo "Configuring prompt"
-        echo "$LINE" >> /home/basecamp/.bashrc
-    else
-        echo "SKIP: prompt already configured"
-    fi
+    echo "Setting Shell Prompt"
+    mkdir -p /home/basecamp/.config/fish/functions
+    FISH_PROMPT=/home/basecamp/.config/fish/functions/fish_prompt.fish
+    { echo 'function fish_prompt'
+      echo '    set_color $fish_color_cwd'
+      echo '    echo $PWD'
+      echo '    set_color normal'
+      echo '    echo -n  " $ "'
+      echo 'end'
+    } > $FISH_PROMPT
 }
 
 set_git_commit_template () {
