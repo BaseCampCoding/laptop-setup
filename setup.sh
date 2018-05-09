@@ -107,7 +107,7 @@ set_prompt () {
       echo '    set_color $fish_color_cwd'
       echo '    echo $PWD'
       echo '    set_color normal'
-      echo '    echo -n  " $ "'
+      echo '    echo -n  " \$ "'
       echo 'end'
     } > $FISH_PROMPT
 }
