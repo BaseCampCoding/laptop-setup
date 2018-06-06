@@ -165,7 +165,7 @@ setup_postgresql () {
 }
 
 configure_pytest () {
-    fish -c "set -x -U PYTEST_ADDOPTS \"--doctest-modules -x\""
+    fish -c "set -x -U PYTEST_ADDOPTS \"--doctest-modules -x -v\""
 }
 
 main () {
